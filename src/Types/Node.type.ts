@@ -1,12 +1,24 @@
-import { Node, NodeProps } from "@xyflow/react";
-import { ReactNode } from "react";
+import { HandleType, Node, NodeProps, Position } from "@xyflow/react";
+import { CSSProperties, ReactNode } from "react";
 import { BusinessMetricType } from "./Metric.type";
 
+export type HandleTypeNode = {
+  handleId: string
+  type: HandleType
+  position: Position
+  style?: {
+    top?: string | number
+    left?: string | number
+    right?: string | number
+    bottom?: string | number
+  }
+}
 //Cluster Node
 export interface ClusterNodeCustomProps {
-  mainIcon?: ReactNode;
-  subIcon?: ReactNode;
+  logo?: ReactNode;
   title?: string;
+  status?: boolean;
+  handles?: HandleTypeNode[],
 }
 
 export interface ClusterNodePropsType extends NodeProps {
@@ -15,6 +27,16 @@ export interface ClusterNodePropsType extends NodeProps {
 
 export interface ClusterNodeType extends Node {
   data: Node["data"] & ClusterNodeCustomProps;
+}
+
+export interface ContainerNodeProps {
+  width: string | number
+  height: string | number
+  title: string
+}
+
+export interface ContainerNodePropsType extends NodeProps {
+  data: NodeProps["data"] & ContainerNodeProps
 }
 
 //Business Node
@@ -39,7 +61,7 @@ export interface OtherNodeCustomProps {
 }
 
 export interface OtherNodePropType extends NodeProps {
-  data: NodeProps["data"] & OtherNodeCustomProps ;
+  data: NodeProps["data"] & OtherNodeCustomProps;
 }
 
 export interface OtherNodeType extends Node {

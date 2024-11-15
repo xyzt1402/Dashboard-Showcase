@@ -3,21 +3,21 @@ import useCreateNode from "./useCreateNode";
 import useCreateEdge from "./useCreateEdge";
 
 const MassiveAppDashboard = () => {
- 
-   
+
+
 
   const { nodeTypes, nodes, onNodesChange, setNodes } = useCreateNode();
-  const { edgeTypes, edges, onEdgesChange, setEdges } = useCreateEdge();
+  const { edges, onEdgesChange, setEdges } = useCreateEdge();
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: '100%', height: "100%" }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         nodeTypes={nodeTypes}
-        edgeTypes={edgeTypes}
-        style={{ backgroundColor: "#0E0526" }}
+        // edgeTypes={edgeTypes}
+        // style={{ backgroundColor: "#0E0526" }}
         zoomOnScroll={false}
         zoomOnPinch={false}
         zoomOnDoubleClick={false}

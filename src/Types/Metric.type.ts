@@ -1,8 +1,8 @@
 export interface Unit {
-  family: string;
-  name: string;
-  plural: string;
-  short_name: string;
+  family?: string;
+  name?: string;
+  plural?: string;
+  short_name?: string;
 }
 
 //Services
@@ -21,6 +21,11 @@ export interface ServiceMetricType {
 //Business
 
 export interface BusinessMetricType {
-  value: number;
+  value?: number[][];
   units: Unit[] | null;
+}
+
+export interface ClusterStatusType {
+  name?: string;
+  status: boolean;
 }

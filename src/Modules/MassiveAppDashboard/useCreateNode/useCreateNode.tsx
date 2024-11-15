@@ -5,29 +5,29 @@ import {
 } from "../../../Redux/Slices/Slice.hook";
 import { setTimeRange } from "../../../Redux/Slices/TimeRange.slice";
 
-import { Node, NodeTypes, useNodesState } from "@xyflow/react";
+import { Node, NodeTypes, Position, useNodesState } from "@xyflow/react";
 import BusinessNode from "../../../Components/BusinessNode";
 import ChartNode from "../../../Components/ChartNode";
 import ServiceNode from "../../../Components/ServiceNode";
 import OtherNode from "../../../Components/OtherNode";
 import { CustomNodeType } from "../../../Types/Node.type";
-import LogoHSC from "../../../assets/IMG/LogoHSC";
-import PlayBtn from "../../../Components/PlayBtn";
-import Select from "../../../Components/Select";
-import RealTimeClock from "../../../Components/RealTimeClock";
 import { RootState } from "../../../Redux/Store";
 import {
   useBusinessIBSQuery,
   useBusinessOneQuery,
 } from "../../../Apis/BusinessMetrics/BusinessMetrics.hook";
-import WebLogin from "../../../assets/IMG/WebLogin";
-import MobileLogin from "../../../assets/IMG/MobileLogin";
-import Order from "../../../assets/IMG/Order";
-import FutureOrder from "../../../assets/IMG/FutureOrder";
-import Deposit from "../../../assets/IMG/Deposit";
-import Withdraw from "../../../assets/IMG/Withdraw";
 import BackgroundNode from "../../../Components/BackgroundNode";
 import RootIMG from "../../../assets/IMG/RootIMG";
+import ClusterNode from "../../../Components/ClusterNode";
+import Firewall from "../../../assets/IMG/Firewall";
+import OneFE from "../../../assets/IMG/OneFE";
+import DataStreaming from "../../../assets/IMG/DataStreaming";
+import IBSBackend from "../../../assets/IMG/IBSBackend";
+import OneCore from "../../../assets/IMG/OneCore";
+import HSCDataFeed from "../../../assets/IMG/HSCDataFeed";
+import CoreAPIGateway from "../../../assets/IMG/CoreAPIGateway";
+import CoreService from "../../../assets/IMG/CoreService";
+import ContainerNode from "../../../Components/ContainerNode";
 
 const useCreateNode = () => {
   const dispatch = useAppDispatch();
@@ -38,208 +38,33 @@ const useCreateNode = () => {
     serviceNode: ServiceNode,
     otherNode: OtherNode,
     backgroundNode: BackgroundNode,
+    clusterNode: ClusterNode,
+    containerNode: ContainerNode
   };
 
-  const { formTime } = useAppSelector((state: RootState) => state.timeRange);
-  const { data: BusinessOneData, isLoading: BusinessOneLoading } =
-    useBusinessOneQuery(formTime);
-  const { data: BusinessIBSData, isLoading: BusinessIBSLoading } =
-    useBusinessIBSQuery(formTime);
-  console.log("BusinessIBSData", BusinessIBSData);
-  const handleChangeRangeTime = (e: ChangeEvent<HTMLSelectElement>): void => {
-    const rangeTime = {
-      from: parseFloat(
-        ((Date.now() - Number(e.target.value)) / 1000).toFixed()
-      ),
-      to: parseFloat((Date.now() / 1000).toFixed()),
-    };
+  // const { formTime } = useAppSelector((state: RootState) => state.timeRange);
+  // const { data: BusinessOneData, isLoading: BusinessOneLoading } =
+  //   useBusinessOneQuery(formTime);
+  // const { data: BusinessIBSData, isLoading: BusinessIBSLoading } =
+  //   useBusinessIBSQuery(formTime);
+  // console.log("BusinessIBSData", BusinessIBSData);
+  // const handleChangeRangeTime = (e: ChangeEvent<HTMLSelectElement>): void => {
+  //   const rangeTime = {
+  //     from: parseFloat(
+  //       ((Date.now() - Number(e.target.value)) / 1000).toFixed()
+  //     ),
+  //     to: parseFloat((Date.now() / 1000).toFixed()),
+  //   };
 
-    dispatch(
-      setTimeRange({ formTime: rangeTime, rangeTime: Number(e.target.value) })
-    );
-  };
+  //   dispatch(
+  //     setTimeRange({ formTime: rangeTime, rangeTime: Number(e.target.value) })
+  //   );
+  // };
 
   useMemo(() => {
     const initialNode: CustomNodeType[] = [
       {
-        id: "logo",
-        type: "otherNode",
-        position: { x: 0, y: 0 },
-        data: {
-          viewOtherThings: (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 9,
-                borderRadius: 9,
-                backgroundColor: " #FFFFFF1A",
-              }}
-            >
-              <LogoHSC />
-              <div
-                style={{
-                  color: "#ffffff",
-
-                  height: "100%",
-                  padding: 9,
-                }}
-              >
-                Application Monitoring Dashboard
-              </div>
-            </div>
-          ),
-        },
-        style: { width: 390, height: 40 },
-      },
-      {
-        id: "playBTN",
-        type: "otherNode",
-        data: {
-          viewOtherThings: <PlayBtn style={{ height: 40 }} />,
-        },
-        position: { x: 1458, y: 0 },
-        style: { width: 48 },
-      },
-      {
-        id: "timeRange",
-        type: "otherNode",
-        data: {
-          viewOtherThings: (
-            <Select
-              options={[
-                { label: "Last 5m", value: 60000 },
-                { label: "Last 15m", value: 900000 },
-                { label: "Last 30m", value: 1800000 },
-                { label: "Last 1h", value: 3600000 },
-                { label: "Last 3h", value: 10800000 },
-                { label: "Last 6h", value: 21600000 },
-                { label: "Last 12h", value: 43200000 },
-                { label: "Last 1d", value: 86400000 },
-              ]}
-              onChange={handleChangeRangeTime}
-              style={{
-                fontSize: 16,
-                fontWeight: 400,
-                padding: "9px 21px",
-                height: 40,
-              }}
-            />
-          ),
-        },
-        position: { x: 1518, y: 0 },
-        style: { width: 150, height: 40 },
-      },
-      {
-        id: "realTimeClock",
-        type: "otherNode",
-        data: {
-          viewOtherThings: <RealTimeClock />,
-        },
-        position: { x: 1701, y: 0 },
-        style: { width: 210, height: 40 },
-      },
-      {
-        id: "webLogin",
-        type: "businessNode",
-        data: {
-          dataBusiness: BusinessIBSData?.["Web-Login"],
-          title: "Web Login",
-          logo: <WebLogin />,
-        },
-        position: { x: 0, y: 66 },
-        style: { width: 210, height: 108 },
-      },
-      {
-        id: "mobileLogin",
-        type: "businessNode",
-        data: {
-          dataBusiness: BusinessIBSData?.["Mobile-Login"],
-          title: "Mobile Login",
-          logo: <MobileLogin />,
-        },
-        position: { x: 243, y: 66 },
-        style: { width: 210, height: 108 },
-      },
-      {
-        id: "order",
-        type: "businessNode",
-        data: {
-          dataBusiness: BusinessOneData?.Orders,
-          title: "Order",
-          logo: <Order />,
-        },
-        position: { x: 486, y: 66 },
-        style: { width: 210, height: 108 },
-      },
-      {
-        id: "futureOrder",
-        type: "businessNode",
-        data: {
-          dataBusiness: BusinessOneData?.["Future-Orders"],
-          title: "Future Order",
-          logo: <FutureOrder />,
-        },
-        position: { x: 729, y: 66 },
-        style: { width: 210, height: 108 },
-      },
-      {
-        id: "deposit",
-        type: "businessNode",
-        data: {
-          dataBusiness: BusinessIBSData?.Deposit,
-          title: "Deposit",
-          logo: <Deposit />,
-        },
-        position: { x: 972, y: 66 },
-        style: { width: 210, height: 108 },
-      },
-      {
-        id: "withdraw",
-        type: "businessNode",
-        data: {
-          dataBusiness: BusinessIBSData?.Withdraw,
-          title: "Withdraw",
-          logo: <Withdraw />,
-        },
-        position: { x: 1215, y: 66 },
-        style: { width: 210, height: 108 },
-      },
-      {
-        id: "loginsPerDay",
-        type: "chartNode",
-        data: {
-          title: "Login Per Day",
-          dataChart: BusinessIBSData?.["Logins-per-Day"],
-        },
-        position: { x: 1458, y: 66 },
-        style: { width: 210, height: 108 },
-      },
-      {
-        id: "OrdersPerDay",
-        type: "chartNode",
-        data: {
-          title: "Login Per Day",
-          dataChart: BusinessIBSData?.["Orders-per-Day"],
-        },
-        position: { x: 1701, y: 66 },
-        style: { width: 210, height: 108 },
-      },
-      {
-        id: "backgroundNode",
-        position: { x: 0, y: 207 },
-        type: "backgroundNode",
-        data: {},
-        style: {
-          width: 1530,
-          height: 555,
-          backgroundColor: "#ffffff1a",
-          zIndex: -6,
-        },
-      },
-      {
         id: "oneMobile",
-        parentId: "backgroundNode",
         type: "otherNode",
         data: {
           viewOtherThings: (
@@ -267,20 +92,18 @@ const useCreateNode = () => {
             </div>
           ),
         },
-        position: { x: 24, y: 120 },
+        position: { x: 10, y: 110 },
       },
       {
         id: "root",
-        parentId: "backgroundNode",
         type: "otherNode",
         data: {
           viewOtherThings: <RootIMG />,
         },
-        position: { x: 51, y: 210 },
+        position: { x: 35, y: 190 },
       },
       {
         id: "oneWeb",
-        parentId: "backgroundNode",
         type: "otherNode",
         data: {
           viewOtherThings: (
@@ -308,12 +131,250 @@ const useCreateNode = () => {
             </div>
           ),
         },
-        position: { x: 30, y: 330 },
+        position: { x: 18, y: 290 },
       },
+      {
+        id: "firewall",
+        type: "clusterNode",
+        data: {
+          logo: <Firewall />,
+          status: true,
+          title: 'Firewall',
+          handles: [{
+            handleId: 'firewall-target-1',
+            position: Position.Left,
+            type: 'target'
+          }, {
+            handleId: 'firewall-1',
+            position: Position.Right,
+            type: 'source'
+          }]
+        },
+        position: { x: 185, y: 197 },
+      },
+      {
+        id: "onefe",
+        type: "clusterNode",
+        data: {
+          logo: <OneFE />,
+          status: true,
+          title: 'One FE',
+          handles: [{
+            handleId: 'onefe-target',
+            type: 'target',
+            position: Position.Left
+          },
+          {
+            handleId: 'onefe-source',
+            type: 'source',
+            position: Position.Right
+          }
+          ]
+        },
+        position: { x: 505, y: 120 },
+      },
+      {
+        id: "data-streaming",
+        type: "clusterNode",
+        data: {
+          logo: <DataStreaming />,
+          status: false,
+          title: 'Data Streaming',
+          handles: [{
+            handleId: 'data-streaming-target-0',
+            type: 'target',
+            position: Position.Left
+          }, {
+            handleId: 'data-streaming-target-1',
+            type: 'target',
+            position: Position.Top
+          },
+          {
+            handleId: 'data-streaming-target-2',
+            type: 'target',
+            position: Position.Bottom
+          },
+          ]
+        },
+        position: { x: 470, y: 300 },
+      },
+      {
+        id: "ibs-backend",
+        type: "clusterNode",
+        data: {
+          logo: <IBSBackend />,
+          status: true,
+          title: 'IBS Backend Service',
+          handles: [{
+            handleId: 'ibsbackend-source',
+            type: 'source',
+            position: Position.Right,
+
+          },
+          ]
+        },
+        position: { x: 850, y: 70 },
+      },
+      {
+        id: "one-core-backend",
+        type: "clusterNode",
+        data: {
+          logo: <OneCore />,
+          status: true,
+          title: 'One Core Backend',
+          handles: [{
+            handleId: 'one-core-target',
+            type: 'target',
+            position: Position.Top,
+            style: {
+              top: '0%',
+              left: '10%'
+            }
+          },
+          {
+            handleId: 'one-core-source-1',
+            type: 'source',
+            position: Position.Left,
+          }, {
+            handleId: 'one-core-source-2',
+            type: 'source',
+            position: Position.Right,
+          }]
+        },
+        position: { x: 857, y: 230 },
+      },
+      {
+        id: "hsc-datafeed",
+        type: "clusterNode",
+        data: {
+          logo: <HSCDataFeed />,
+          status: true,
+          title: 'HSC Datafeed',
+          handles: [{
+            handleId: 'hsc-datafeed-source',
+            type: 'source',
+            position: Position.Left,
+          }]
+        },
+        position: { x: 883, y: 390 },
+      },
+      {
+        id: "core-api-gateway",
+        type: "clusterNode",
+        data: {
+          logo: <CoreAPIGateway />,
+          status: true,
+          title: 'Core API Gateway',
+          handles: [
+            {
+              handleId: 'core-api-gateway-target-1',
+              type: 'target',
+              position: Position.Left,
+              style: {
+                top: '30%',
+                left: 0
+              }
+            },
+            {
+              handleId: 'core-api-gateway-target-2',
+              type: 'target',
+              position: Position.Left,
+              style: {
+                top: '70%',
+                left: 0
+              }
+            },
+            {
+              handleId: 'core-api-gateway-source-1',
+              type: 'source',
+              position: Position.Right,
+            },
+          ]
+        },
+        position: { x: 1265, y: 100 },
+      },
+      {
+        id: "core-trading-service",
+        type: "clusterNode",
+        data: {
+          logo: <CoreService />,
+          status: true,
+          title: 'Core Trading Gateway',
+          handles: [
+            {
+              handleId: 'core-trading-service-target-1',
+              type: 'target',
+              position: Position.Right,
+            }
+          ]
+        },
+        position: { x: 1235, y: 300 },
+      },
+      {
+        id: "one-dmz-cluster",
+        type: 'containerNode',
+        data: {
+          title: 'ONE DMZ Cluster',
+          width: '20rem',
+          height: 400
+        },
+        position: { x: 425, y: 40 }
+      },
+      {
+        id: "ibs-cluster",
+        type: 'containerNode',
+        data: {
+          title: 'IBS Cluster',
+          width: '22rem',
+          height: '9rem'
+        },
+        position: { x: 810, y: 20 }
+      },
+      {
+        id: "one-core-cluster",
+        type: 'containerNode',
+        data: {
+          title: 'One Core Cluster',
+          width: '22rem',
+          height: '9rem'
+        },
+        position: { x: 810, y: 180 }
+      },
+      {
+        id: "hsc-data-feed-container",
+        type: 'containerNode',
+        data: {
+          title: 'HSC Datafeed',
+          width: '22rem',
+          height: '8rem'
+        },
+        position: { x: 810, y: 340 }
+      },
+      {
+        id: "tsp-cluster",
+        type: 'containerNode',
+        data: {
+          title: 'TSP Cluster',
+          width: '22rem',
+          height: '10rem'
+        },
+        position: { x: 1210, y: 50 }
+      },
+      {
+        id: "core-service-container",
+        type: 'containerNode',
+        data: {
+          title: 'Core Service',
+          width: '22rem',
+          height: '10rem'
+        },
+        position: { x: 1210, y: 250 }
+      }
+
     ];
 
     setNodes(initialNode);
-  }, [BusinessIBSData, BusinessOneData]);
+  }, []);
   return { nodes, setNodes, onNodesChange, nodeTypes };
 };
 

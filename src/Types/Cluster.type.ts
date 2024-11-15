@@ -17,3 +17,7 @@ export interface BusinessClusterIBS {
   "Web-Login": BusinessMetricType;
   Withdraw: BusinessMetricType;
 }
+
+export interface ClusterStatus {
+
+}

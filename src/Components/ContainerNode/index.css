@@ -1,0 +1,15 @@
+.hsc-container-node {
+    text-align: center;
+    /* border: dashed 0.1rem white; */
+    border-radius: 0.5rem;
+    /* border-width: 0.1rem; */
+    /* border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2' viewBox='0 0 10 10'%3E%3Cline x1='0' y1='5' x2='10' y2='5' stroke='%23ffffff' stroke-width='3' stroke-dasharray='5, 5' /%3E%3C/svg%3E") 1; */
+    color: white
+}
+
+.hsc-container-title {
+    padding-top: 1rem;
+    font-size: 1rem;
+    text-decoration: underline;
+    font-weight: 700;
+}

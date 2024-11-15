@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 18px;
+    padding: 30px 18px;
+    flex: 1 1 150px;
+    /* Flex-grow, shrink, and basis properties */
+    background-color: #ffffff1a;
+    color: #FFFFFF;
+    border-radius: 0.5rem;
+
+    .logo {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+
+        svg {
+            width: 48px;
+            height: 48px;
+        }
+    }
+
+    .title {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        font-size: 12px;
+    }
+
+    .dataBusiness {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+        font-size: 24px;
+        font-weight: 700;
+    }
+}

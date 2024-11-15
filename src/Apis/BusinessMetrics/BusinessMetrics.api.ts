@@ -4,7 +4,9 @@ import fetcherAPI from "../fetcher";
 import {
   BusinessClusterIBS,
   BusinessClusterOne,
+  ClusterStatus,
 } from "../../Types/Cluster.type";
+import { ClusterStatusType } from "../../Types/Metric.type";
 
 export const getBusinessONE = async (payload: RangeTimeType) => {
   try {
@@ -43,3 +45,10 @@ export const getBusinessIBS = async (payload: RangeTimeType) => {
     }
   }
 };
+
+
+// export const getClusterStatus = async (payload: RangeTimeType) => {
+//   try {
+//     const response: ResponseApiType<ClusterStatus> = await fetcherAPI
+//   }
+// }

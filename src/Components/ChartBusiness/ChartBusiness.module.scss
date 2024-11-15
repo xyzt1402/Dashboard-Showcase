@@ -1,0 +1,26 @@
+.container {
+    width: 100%;
+    height: 100%;
+    // display: grid;
+    // grid-template-columns: auto auto;
+    // grid-template-rows: auto auto;
+    // align-items: center;
+    // justify-content: flex-start;
+    // column-gap: 18px;
+    // padding: 30px 18px;
+    // flex: 1 1 150px;
+    // /* Flex-grow, shrink, and basis properties */
+    flex: 1 1 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #ffffff1a;
+    color: #FFFFFF;
+    border-radius: 0.5rem;
+
+    .title {
+        padding-bottom: 0.3rem;
+    }
+}

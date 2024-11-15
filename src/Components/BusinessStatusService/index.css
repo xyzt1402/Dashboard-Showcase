@@ -1,0 +1,38 @@
+.hsc-business-status-service-container {
+    /* background-color: #FFFFFF1A; */
+    border-radius: 0.5rem;
+    text-align: center;
+    width: 100%;
+    color: white;
+    line-height: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    font-size: 1rem;
+
+}
+
+.hsc-business-status {
+    border-radius: 1rem;
+    text-align: center;
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    /* line-height: 0.2rem; */
+}
+
+.hsc-ok {
+    background-color: #ACFDD7;
+    color: #1F5F29;
+    width: fit-content;
+}
+
+.hsc-not-ok {
+    background-color: #F8D3D3;
+    color: #BF3B34;
+    width: fit-content;
+}

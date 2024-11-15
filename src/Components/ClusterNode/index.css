@@ -1,0 +1,35 @@
+.hsc-cluster-node-container {
+    background-color: white;
+    color: black;
+    border: solid;
+    border-radius: 1rem;
+    border-width: 0.4rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: fit-content;
+    height: 3.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.2rem;
+    /* text-align: center; */
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.hsc-cluster-notok {
+    border-color: #FF2735;
+}
+
+.hsc-cluster-ok {
+    border-color: #3ABC4F;
+}
+
+.hsc-cluster-node-title {
+    margin-bottom: 0.2rem;
+}
+
+.hsc-handle {
+    opacity: 0;
+}

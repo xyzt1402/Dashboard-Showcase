@@ -1,0 +1,51 @@
+.table-container {
+    padding: 1rem;
+    width: fit-content;
+    font-size: 0.8rem;
+}
+
+.service-table {
+    /* width: 100%; */
+    border-collapse: collapse;
+    color: white;
+    /* border-spacing: none; */
+}
+
+.service-table th,
+.service-table td {
+    padding: 0.5rem;
+    text-align: center;
+    line-height: 0.5;
+    height: fit-content;
+}
+
+.service-table th:first-child,
+.service-table td:first-child {
+    border-right: 2px solid white;
+    /* Divider between first and other columns */
+}
+
+.service-table th,
+.service-table td {
+    border-bottom: none;
+    /* Horizontal row dividers */
+}
+
+.circle {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+}
+
+.ok {
+    background-color: #68EB7D;
+}
+
+.failed {
+    background-color: #FF848C;
+}
+
+.avail {
+    display: flex;
+    justify-content: center;
+}
