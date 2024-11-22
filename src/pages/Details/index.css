@@ -1,0 +1,13 @@
+.hsc-mini-circle-passed {
+    width: 1rem;
+    height: 1rem;
+    background-color: #68EB7D;
+    border-radius: 50%;
+}
+
+.hsc-mini-circle-failed {
+    width: 1rem;
+    height: 1rem;
+    background-color: #FF848C;
+    border-radius: 50%;
+}

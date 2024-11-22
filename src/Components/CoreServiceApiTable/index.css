@@ -1,31 +1,31 @@
-.table-container {
+.core-api-table-container {
     padding: 1rem;
-    width: fit-content;
+    width: 100%;
     font-size: 0.8rem;
 }
 
-.service-table {
-    /* width: 100%; */
+.core-api-service-table {
+    width: 100%;
     border-collapse: collapse;
     color: white;
     /* border-spacing: none; */
 }
 
-.service-table th,
-.service-table td {
-    padding: 0.5rem;
+.core-api-service-table th,
+.core-api-service-table td {
+    padding: 0.4rem;
     text-align: center;
-    line-height: 0.5;
+    line-height: 0.5rem;
 }
 
-.service-table th:first-child,
-.service-table td:first-child {
+.core-api-service-table th:first-child,
+.core-api-service-table td:first-child {
     border-right: 2px solid white;
     /* Divider between first and other columns */
 }
 
-.service-table th,
-.service-table td {
+.core-api-service-table th,
+.core-api-service-table td {
     border-bottom: none;
     /* Horizontal row dividers */
 }

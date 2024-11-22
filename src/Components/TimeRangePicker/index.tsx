@@ -18,7 +18,6 @@ const TimeRangePicker = (props: Props) => {
             ),
             to: parseFloat((Date.now() / 1000).toFixed()),
         };
-        console.log('rangeTime', rangeTime)
 
         dispatch(
             setTimeRange({ formTime: rangeTime, rangeTime: Number(e.target.value) })

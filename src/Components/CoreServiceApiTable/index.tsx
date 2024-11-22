@@ -8,8 +8,8 @@ type Props = {
 const CoreServiceAPI = ({ data }: Props) => {
 
     return (
-        <div className='table-container'>
-            <table className="service-table">
+        <div className='core-api-table-container'>
+            <table className="core-api-service-table  ">
                 <thead>
                     <tr>
                         <th>Core ApiServices</th>

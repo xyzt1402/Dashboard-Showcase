@@ -30,6 +30,11 @@
     margin-bottom: 0.2rem;
 }
 
+.hsc-cluster-null {
+    border-color: #C3C7CB;
+
+}
+
 .hsc-handle {
     opacity: 0;
 }

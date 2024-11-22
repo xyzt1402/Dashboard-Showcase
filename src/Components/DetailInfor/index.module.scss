@@ -1,0 +1,51 @@
+.detail-info {
+    background-color: #FFFFFF1A;
+    color: white;
+    flex: 1 1 10rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+
+    .detail-title {
+        height: 5rem;
+        width: 100%;
+        padding-left: 1.5rem;
+        background-color: #FFFFFF1A;
+        font-size: 1.2rem;
+        font-weight: 700;
+        gap: 0.5rem;
+        display: flex;
+        align-items: center;
+        border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .detail-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex: 1 1 100%;
+        gap: 0.5rem;
+    }
+}
+
+.duration-title {
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.normal-title {
+    font-weight: 700;
+    font-size: 6rem;
+}
+
+.start-date-title {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.divider {
+    width: 60%;
+    height: 1px;
+    background-color: white;
+}

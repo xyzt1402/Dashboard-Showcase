@@ -1,31 +1,34 @@
-.table-container {
+.hsc-table-container {
     padding: 1rem;
-    width: fit-content;
+    /* width: 100%; */
     font-size: 0.8rem;
+    flex: 1 1 auto;
+    background-color: #ffffff1a;
+    border-radius: 0.5rem;
 }
 
-.service-table {
-    /* width: 100%; */
+.hsc-service-table {
+    width: 100%;
     border-collapse: collapse;
     color: white;
     /* border-spacing: none; */
 }
 
-.service-table th,
-.service-table td {
-    padding: 0.5rem;
+.hsc-service-table th,
+.hsc-service-table td {
+    padding: 0.4rem;
     text-align: center;
-    line-height: 0.5;
+    line-height: 0.5rem;
 }
 
-.service-table th:first-child,
-.service-table td:first-child {
+.hsc-service-table th:first-child,
+.hsc-service-table td:first-child {
     border-right: 2px solid white;
     /* Divider between first and other columns */
 }
 
-.service-table th,
-.service-table td {
+.hsc-service-table th,
+.hsc-service-table td {
     border-bottom: none;
     /* Horizontal row dividers */
 }

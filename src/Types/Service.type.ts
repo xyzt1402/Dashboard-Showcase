@@ -19,10 +19,10 @@ interface ServiceStatus {
 export type ServiceMetrics<T extends string> = Record<T, ServiceStatus>;
 
 // Example usage:
-export type IBSBackendServiceKey = "IBS-Backend" | "IBS-Utilities" | "ONE-Backend" | "eKYC-Backend";
+export type IBSBackendServiceKey = "IBS-Backend" | "Utilities" | "ONE-Backend" | "eKYC-Backend";
 export type CoreServiceKeys =
     | "Data-Mgt"
     | "Equity-Order"
-    | "Future-Orders"
+    | "Futures-Order"
     | "Order-Update"
     | "Parameter";

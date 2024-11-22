@@ -1,14 +1,37 @@
 import React from 'react'
 import "./index.css"
 import { IBSBackendServiceKey, ServiceMetrics } from '../../Types/Service.type'
+import { useNavigate } from 'react-router-dom'
 type Props = {
     data?: ServiceMetrics<IBSBackendServiceKey>
 }
 
+const getNestedValue = (path: () => number | undefined | null, fallback: string = 'N/A'): string => {
+    try {
+        const value = path();
+        return value != null ? value.toFixed(2) : fallback;
+    } catch {
+        return fallback;
+    }
+};
+
 const IBSBackendTable = ({ data }: Props) => {
+
+    const rows: { name: string, key: IBSBackendServiceKey }[] = [
+        { name: 'ONE BackEnd', key: 'ONE-Backend' },
+        { name: 'IBS BackEnd', key: 'IBS-Backend' },
+        { name: 'eKYC BackEnd', key: 'eKYC-Backend' },
+        { name: 'IBS Utilities', key: 'Utilities' },
+    ];
+    const navigate = useNavigate(); // useNavigate hook
+
+    const handleRowClick = (name: string) => {
+        // Use navigate for programmatic navigation
+        navigate(`/details?current-detail=${name}`);
+    };
     return (
-        <div className='table-container'>
-            <table className="service-table">
+        <div className='ibs-table-container'>
+            <table className="ibs-service-table">
                 <thead>
                     <tr>
                         <th>IBS BackEnd</th>
@@ -18,39 +41,25 @@ const IBSBackendTable = ({ data }: Props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>ONE BackEnd</td>
-                        <td className='avail'>
-                            <div className={`circle ${data ? data['ONE-Backend'].Avail === 'OK' ? 'ok' : 'failed' : ''}`} />
-                        </td>
-                        <td>{data ? data['ONE-Backend']['Req/s'].value[0][1].toFixed(2) : ''}</td>
-                        <td>{data ? data['ONE-Backend'].Errors.value[0][1].toFixed(2) : ''}</td>
-                    </tr>
-                    <tr>
-                        <td>IBS BackEnd</td>
-                        <td className='avail'>
-                            <div className={`circle ${data ? data['IBS-Backend'].Avail === 'OK' ? 'ok' : 'failed' : ''}`} />
-                        </td>
-                        <td>{data ? data['IBS-Backend']['Req/s'].value[0][1].toFixed(2) : ''}</td>
-                        <td>{data ? data['IBS-Backend'].Errors.value[0][1].toFixed(2) : ''}</td>
-                    </tr>
-                    <tr>
-                        <td>eKYC BackEnd</td>
-                        <td className='avail'>
-                            <div className={`circle ${data ? data['eKYC-Backend'].Avail === 'OK' ? 'ok' : 'failed' : ''}`} />
-                        </td>
-                        <td>{data ? data['eKYC-Backend']['Req/s'].value[0][1].toFixed(2) : ''}</td>
-                        <td>{data ? data['eKYC-Backend'].Errors.value[0][1].toFixed(2) : ''}</td>
-                    </tr>
-                    <tr>
-                        <td>IBS Ultilities</td>
-                        <td className='avail'>
-                            <div className={`circle ${data ? data['IBS-Utilities'].Avail === 'OK' ? 'ok' : 'failed' : ''}`} />
-                        </td>
-                        <td>{data ? data['IBS-Utilities']['Req/s'].value[0][1].toFixed(2) : ''}</td>
-                        <td>{data ? data['IBS-Utilities'].Errors.value[0][1].toFixed(2) : ''}</td>
-                    </tr>
+                    {rows.map(({ name, key }) => (
+                        <tr key={key} onClick={() => handleRowClick(key)}>
+                            <td>{name}</td>
+                            <td className="avail">
+                                <div
+                                    className={`circle ${data?.[key]?.Avail === 'OK'
+                                        ? 'ok'
+                                        : data?.[key]?.Avail
+                                            ? 'failed'
+                                            : 'null'
+                                        }`}
+                                />
+                            </td>
+                            <td>{getNestedValue(() => data![key]['Req/s']!.value[0][1])}</td>
+                            <td>{getNestedValue(() => data![key].Errors!.value[0][1])}</td>
+                        </tr>
+                    ))}
                 </tbody>
+
             </table>
         </div>
     )

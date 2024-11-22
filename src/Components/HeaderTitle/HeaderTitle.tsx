@@ -1,9 +1,8 @@
 import React from 'react'
 import LogoHSC from '../../assets/IMG/LogoHSC'
 
-type Props = {}
 
-const HeaderTitle = (props: Props) => {
+const HeaderTitle = () => {
     return (
         <div
             style={{

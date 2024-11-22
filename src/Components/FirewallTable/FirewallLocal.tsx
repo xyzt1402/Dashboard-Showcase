@@ -4,7 +4,7 @@ type Props = {}
 
 const FirewallLocal = (props: Props) => {
     return (
-        <div className='table-container'>
+        <div className='firewall-table-container'>
             <table className="firewall-table">
                 <thead>
                     <tr>

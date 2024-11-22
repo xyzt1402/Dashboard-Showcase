@@ -5,8 +5,8 @@ type Props = {}
 
 const ONEFeTable = (props: Props) => {
     return (
-        <div className='table-container'>
-            <table className="service-table">
+        <div className='one-table-container'>
+            <table className="one-service-table">
                 <thead>
                     <tr>
                         <th>ONE FE</th>

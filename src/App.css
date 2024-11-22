@@ -22,7 +22,8 @@
 
 .hsc-business-metric {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  flex: 1 1 10%;
   /* Allows items to wrap onto multiple lines */
   gap: 1rem;
   /* Optional: space between items */
@@ -33,7 +34,8 @@
 
 .hsc-status-container {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
+  flex: 1 1 30%;
   /* Allows items to wrap onto multiple lines */
   gap: 1rem;
   /* Optional: space between items */
@@ -58,43 +60,139 @@
 
 .hsc-service-metric {
   display: flex;
-  flex-wrap: wrap;
-  /* Allows items to wrap onto multiple lines */
+  /* flex-wrap: wrap; */
+  /* Allow items to wrap onto multiple lines */
   gap: 1rem;
-  /* Optional: space between items */
+  /* Space between items */
   padding-left: 2rem;
   padding-right: 2rem;
   padding-bottom: 2rem;
-  flex: 1
+  flex: 1 1 25%;
+  /* Let the container take up the available space */
+  justify-content: space-between;
+  /* Adjust spacing between items */
 }
 
 .hsc-service-1 {
-  flex: 1 1 250;
+  flex: 1 1 calc(18.69% - 1rem);
+  /* Use calculated ratio */
   background-color: #ffffff1a;
   border-radius: 0.5rem;
-  /* height: 18rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hsc-service-2 {
-  flex: 1 1 350;
-  background-color: #ffffff1a;
-  border-radius: 0.5rem;
+  flex: 1 1 calc(22.06% - 1rem);
+  /* Use calculated ratio */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 
 .hsc-service-3 {
-  flex: 1 1 250;
-  background-color: #ffffff1a;
-  border-radius: 0.5rem;
+  flex: 1 1 calc(22.06% - 1rem);
+  /* Use calculated ratio */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hsc-service-4 {
-  flex: 1 1 250;
+  flex: 1 1 calc(13.25% - 1rem);
+  /* Use calculated ratio */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.hsc-service-5 {
+  flex: 1 1 calc(23.94% - 1rem);
+  /* Use calculated ratio */
   background-color: #ffffff1a;
   border-radius: 0.5rem;
 }
 
-.hsc-service-5 {
-  flex: 1 1 250;
-  background-color: #ffffff1a;
-  border-radius: 0.5rem;
+/* Optional: Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+
+  .hsc-service-1,
+  .hsc-service-2,
+  .hsc-service-3,
+  .hsc-service-4,
+  .hsc-service-5 {
+    flex: 1 1 calc(50% - 1rem);
+    /* Adjust for two items per row */
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hsc-service-1,
+  .hsc-service-2,
+  .hsc-service-3,
+  .hsc-service-4,
+  .hsc-service-5 {
+    flex: 1 1 100%;
+    /* Stack items vertically on small screens */
+  }
+}
+
+.hsc-details-info {
+  flex: 0 0 14rem;
+  /* Fixed height of 14rem */
+  display: flex;
+  gap: 2rem;
+  padding: 0 2rem;
+  margin-bottom: 2rem;
+}
+
+.hsc-details-table-container {
+  flex: 1 1 auto;
+  /* Take up the remaining space */
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  /* Ensures the container stretches to fill available space */
+  margin: 0 2rem 2rem;
+  height: 100%;
+  /* Ensures the container takes the full available height */
+  overflow: auto;
+  /* Optional, for scrolling content if necessary */
+}
+
+.hsc-details-table-container::-webkit-scrollbar {
+  width: 8px;
+  /* Scrollbar width */
+  height: 8px;
+  /* Scrollbar height for horizontal scrolling */
+}
+
+.hsc-details-table-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  /* Thumb color */
+  border-radius: 4px;
+  /* Rounded corners */
+}
+
+.hsc-details-table-container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  /* Hover effect */
+}
+
+.hsc-details-table-container::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1);
+  /* Track color */
+  border-radius: 4px;
+}
+
+/* For Firefox */
+.hsc-details-table-container {
+  scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.1);
+  /* Thumb and track colors */
+  scrollbar-width: thin;
+  /* Thin scrollbar */
 }

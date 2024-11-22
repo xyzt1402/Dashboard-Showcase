@@ -1,31 +1,35 @@
-.table-container {
+.one-table-container {
     padding: 1rem;
-    width: fit-content;
+    width: 100%;
     font-size: 0.8rem;
+    background-color: #ffffff1a;
+    border-radius: 0.5rem;
 }
 
-.service-table {
-    /* width: 100%; */
+.one-service-table {
+    width: 100%;
     border-collapse: collapse;
     color: white;
     /* border-spacing: none; */
 }
 
-.service-table th,
-.service-table td {
-    padding: 0.5rem;
+.one-service-table th,
+.one-service-table td {
+    padding: 0.4rem;
     text-align: center;
-    line-height: 0.5;
+    line-height: 0.5rem;
 }
 
-.service-table th:first-child,
-.service-table td:first-child {
+.one-service-table th:first-child,
+.one-service-table td:first-child {
     border-right: 2px solid white;
     /* Divider between first and other columns */
+    width: 9rem;
+
 }
 
-.service-table th,
-.service-table td {
+.one-service-table th,
+.one-service-table td {
     border-bottom: none;
     /* Horizontal row dividers */
 }

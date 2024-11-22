@@ -13,8 +13,7 @@ const useBusinessMetric = () => {
         useBusinessIBSQuery(formTime);
 
     const { data: businessClusterOne, isLoading: businessClusterOneLoading } = useBusinessOneQuery(formTime);
-    console.log("BusinessIBSData", businessIBSData);
-    console.log("businesscluster", businessClusterOne)
+
     const handleChangeRangeTime = (e: ChangeEvent<HTMLSelectElement>): void => {
         const rangeTime = {
             from: parseFloat(

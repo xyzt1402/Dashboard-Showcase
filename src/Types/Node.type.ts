@@ -17,7 +17,7 @@ export type HandleTypeNode = {
 export interface ClusterNodeCustomProps {
   logo?: ReactNode;
   title?: string;
-  status?: boolean;
+  status?: null | boolean;
   handles?: HandleTypeNode[],
 }
 

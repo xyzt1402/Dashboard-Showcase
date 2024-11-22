@@ -4,8 +4,8 @@ type Props = {}
 
 const TSPService = (props: Props) => {
     return (
-        <div className='table-container'>
-            <table className="service-table">
+        <div className='tsp-table-container'>
+            <table className="tsp-service-table">
                 <thead>
                     <tr>
                         <th>TSP Service</th>

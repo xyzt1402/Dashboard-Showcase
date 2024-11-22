@@ -5,10 +5,15 @@ import { Handle, Position } from '@xyflow/react'
 
 const ClusterNode = ({ data }: ClusterNodePropsType) => {
     const { status, logo, title, handles } = data
-
+    console.log('status', status)
     return (
         <>
-            <div className={`hsc-cluster-node-container ${status ? 'hsc-cluster-ok' : 'hsc-cluster-notok'}`}>
+            <div className={`hsc-cluster-node-container ${status === true
+                ? 'hsc-cluster-ok'
+                : status === false
+                    ? 'hsc-cluster-notok'
+                    : 'hsc-cluster-null'
+                }`}>
                 <div className='hsc-cluster-node-logo'>{logo}</div>
                 <div className='hsc-cluster-node-title'>{title}</div>
 

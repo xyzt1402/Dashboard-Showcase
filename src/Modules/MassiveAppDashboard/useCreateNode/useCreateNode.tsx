@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useMemo } from "react";
+import React, { ChangeEvent, useEffect, useMemo } from "react";
 import {
   useAppDispatch,
   useAppSelector,
@@ -28,6 +28,7 @@ import HSCDataFeed from "../../../assets/IMG/HSCDataFeed";
 import CoreAPIGateway from "../../../assets/IMG/CoreAPIGateway";
 import CoreService from "../../../assets/IMG/CoreService";
 import ContainerNode from "../../../Components/ContainerNode";
+import { useClusterStatus } from "../../../Apis/ClusterStatus/ClusterStatus.hook";
 
 const useCreateNode = () => {
   const dispatch = useAppDispatch();
@@ -42,7 +43,9 @@ const useCreateNode = () => {
     containerNode: ContainerNode
   };
 
-  // const { formTime } = useAppSelector((state: RootState) => state.timeRange);
+  const { formTime } = useAppSelector((state: RootState) => state.timeRange);
+  const { data: clusterStatus, isLoading: clusterStatusLoading } = useClusterStatus(formTime);
+  console.log('clusterStatus', clusterStatus)
   // const { data: BusinessOneData, isLoading: BusinessOneLoading } =
   //   useBusinessOneQuery(formTime);
   // const { data: BusinessIBSData, isLoading: BusinessIBSLoading } =
@@ -61,7 +64,7 @@ const useCreateNode = () => {
   //   );
   // };
 
-  useMemo(() => {
+  useEffect(() => {
     const initialNode: CustomNodeType[] = [
       {
         id: "oneMobile",
@@ -138,8 +141,10 @@ const useCreateNode = () => {
         type: "clusterNode",
         data: {
           logo: <Firewall />,
-          status: true,
           title: 'Firewall',
+          status: clusterStatus
+            ? (clusterStatus.Firewall === null ? null : (clusterStatus.Firewall === 'OK')) // Check if clusterStatus has a value and Firewall is 'OK'
+            : null, // If clusterStatus is null or undefined, status will be null        
           handles: [{
             handleId: 'firewall-target-1',
             position: Position.Left,
@@ -157,7 +162,9 @@ const useCreateNode = () => {
         type: "clusterNode",
         data: {
           logo: <OneFE />,
-          status: true,
+          status: clusterStatus
+            ? (clusterStatus["ONE-FE"] === null ? null : (clusterStatus["ONE-FE"] === 'OK'))  // Check if clusterStatus has a value and Firewall is 'OK'
+            : null, // If clusterStatus is null or undefined, status will be null             
           title: 'One FE',
           handles: [{
             handleId: 'onefe-target',
@@ -178,7 +185,9 @@ const useCreateNode = () => {
         type: "clusterNode",
         data: {
           logo: <DataStreaming />,
-          status: false,
+          status: clusterStatus
+            ? (clusterStatus["Data-streaming"] === null ? null : (clusterStatus["Data-streaming"] === 'OK')) // Check if clusterStatus has a value and Firewall is 'OK'
+            : null, // If clusterStatus is null or undefined, status will be null             
           title: 'Data Streaming',
           handles: [{
             handleId: 'data-streaming-target-0',
@@ -203,7 +212,9 @@ const useCreateNode = () => {
         type: "clusterNode",
         data: {
           logo: <IBSBackend />,
-          status: true,
+          status: clusterStatus
+            ? (clusterStatus["IBS-Backend-Service"] === null ? null : (clusterStatus["IBS-Backend-Service"] === 'OK'))  // Check if clusterStatus has a value and Firewall is 'OK'
+            : null, // If clusterStatus is null or undefined, status will be null              
           title: 'IBS Backend Service',
           handles: [{
             handleId: 'ibsbackend-source',
@@ -220,7 +231,9 @@ const useCreateNode = () => {
         type: "clusterNode",
         data: {
           logo: <OneCore />,
-          status: true,
+          status: clusterStatus
+            ? (clusterStatus["One-Core-Backend"] === null ? null : (clusterStatus["One-Core-Backend"] === 'OK'))  // Check if clusterStatus has a value and Firewall is 'OK'
+            : null, // If clusterStatus is null or undefined, status will be null               
           title: 'One Core Backend',
           handles: [{
             handleId: 'one-core-target',
@@ -248,7 +261,9 @@ const useCreateNode = () => {
         type: "clusterNode",
         data: {
           logo: <HSCDataFeed />,
-          status: true,
+          status: clusterStatus
+            ? (clusterStatus["HSC-Datafeed"] === null ? null : (clusterStatus["HSC-Datafeed"] === 'OK')) // Check if clusterStatus has a value and Firewall is 'OK'
+            : null, // If clusterStatus is null or undefined, status will be null     
           title: 'HSC Datafeed',
           handles: [{
             handleId: 'hsc-datafeed-source',
@@ -263,7 +278,9 @@ const useCreateNode = () => {
         type: "clusterNode",
         data: {
           logo: <CoreAPIGateway />,
-          status: true,
+          status: clusterStatus
+            ? (clusterStatus["Core-API-Gateway"] === null ? null : (clusterStatus["Core-API-Gateway"] === 'OK'))  // Check if clusterStatus has a value and Firewall is 'OK'
+            : null, // If clusterStatus is null or undefined, status will be null     
           title: 'Core API Gateway',
           handles: [
             {
@@ -298,7 +315,9 @@ const useCreateNode = () => {
         type: "clusterNode",
         data: {
           logo: <CoreService />,
-          status: true,
+          status: clusterStatus
+            ? (clusterStatus["Core-Trading-Services"] === null ? null : (clusterStatus["Core-Trading-Services"] === 'OK'))  // Check if clusterStatus has a value and Firewall is 'OK'
+            : null, // If clusterStatus is null or undefined, status will be null     
           title: 'Core Trading Gateway',
           handles: [
             {
@@ -374,7 +393,7 @@ const useCreateNode = () => {
     ];
 
     setNodes(initialNode);
-  }, []);
+  }, [clusterStatus]);
   return { nodes, setNodes, onNodesChange, nodeTypes };
 };
 

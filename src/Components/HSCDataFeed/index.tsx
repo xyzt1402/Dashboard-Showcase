@@ -4,8 +4,8 @@ type Props = {}
 
 const HSCDataFeedTable = (props: Props) => {
     return (
-        <div className='table-container'>
-            <table className="service-table">
+        <div className='hsc-table-container'>
+            <table className="hsc-service-table">
                 <thead>
                     <tr>
                         <th>HSC DataFeed</th>

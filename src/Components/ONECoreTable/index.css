@@ -1,34 +1,51 @@
-.table-container {
+.one-table-container {
     padding: 1rem;
-    width: fit-content;
+    width: 100%;
     font-size: 0.8rem;
+    background-color: #ffffff1a;
+    border-radius: 0.5rem;
+    min-height: 7rem;
 }
 
-.service-table {
-    /* width: 100%; */
+.one-core-service-table {
+    width: 100%;
     border-collapse: collapse;
     color: white;
     /* border-spacing: none; */
 }
 
-.service-table th,
-.service-table td {
-    padding: 0.5rem;
+.one-core-service-table th,
+.one-core-service-table td {
+    padding: 0.3rem;
     text-align: center;
-    line-height: 0.5;
+    line-height: 0.5rem;
     height: fit-content;
 }
 
-.service-table th:first-child,
-.service-table td:first-child {
+.one-core-service-table th:first-child,
+.one-core-service-table td:first-child {
     border-right: 2px solid white;
     /* Divider between first and other columns */
+    width: 9rem;
+
 }
 
-.service-table th,
-.service-table td {
+.one-core-service-table th,
+.one-core-service-table td {
     border-bottom: none;
     /* Horizontal row dividers */
+}
+
+.one-core-service-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.one-core-service-table tbody tr:hover {
+    background-color: #f1f1f12f;
+    border-radius: 1rem;
+    /* Light gray color for the hover effect */
+    cursor: pointer;
+    /* Change cursor to indicate the row is clickable */
 }
 
 .circle {
@@ -43,6 +60,10 @@
 
 .failed {
     background-color: #FF848C;
+}
+
+.null {
+    background-color: #C3C7CB;
 }
 
 .avail {

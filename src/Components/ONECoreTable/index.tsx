@@ -1,16 +1,49 @@
 import React from 'react'
 import "./index.css"
 import { CoreServiceKeys, ServiceMetrics } from '../../Types/Service.type'
+import { useNavigate } from 'react-router-dom'
 type Props = {
     data?: ServiceMetrics<CoreServiceKeys>
 }
 
+type ServiceData = {
+    [key: string]: {
+        Avail?: 'OK' | 'FAILED';
+        'Req/s'?: { value: [number, number][] };
+        Errors?: { value: [number, number][] };
+    };
+};
+
+
+const getNestedValue = (path: () => number | undefined | null, fallback: string = 'N/A'): string => {
+    try {
+        const value = path();
+        return value != null ? value.toFixed(2) : fallback;
+    } catch {
+        return fallback;
+    }
+};
+
+
 const OneCoreTable = ({ data }: Props) => {
+    const rows: { name: string, key: CoreServiceKeys }[] = [
+        { name: 'Equity Order', key: 'Equity-Order' },
+        { name: 'Future Order', key: 'Futures-Order' },
+        { name: 'Order Update', key: 'Order-Update' },
+        { name: 'Data-Mgt', key: 'Data-Mgt' },
+        { name: 'Parameter', key: 'Parameter' },
+    ];
+    const navigate = useNavigate(); // useNavigate hook
+
+    const handleRowClick = (name: string) => {
+        // Use navigate for programmatic navigation
+        navigate(`/details?current-detail=${name}`);
+    };
 
     return (
-        <div className='table-container'>
+        <div className='one-table-container'>
 
-            <table className="service-table">
+            <table className="one-core-service-table">
                 <thead>
                     <tr>
                         <th>One Core</th>
@@ -20,47 +53,25 @@ const OneCoreTable = ({ data }: Props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Equity Order</td>
-                        <td className='avail'>
-                            <div className={`circle ${data ? data['Equity-Order'].Avail === 'OK' ? 'ok' : 'failed' : ''}`} />
-                        </td>
-                        <td>{data ? data['Equity-Order']['Req/s'].value[0][1].toFixed(2) : ''}</td>
-                        <td>{data ? data['Equity-Order'].Errors.value[0][1].toFixed(2) : ''}</td>
-                    </tr>
-                    <tr>
-                        <td>Future Order</td>
-                        <td className='avail'>
-                            <div className={`circle ${data ? data['Future-Orders'].Avail === 'OK' ? 'ok' : 'failed' : ''}`} />
-                        </td>
-                        <td>{data ? data['Future-Orders']['Req/s'].value[0][1].toFixed(2) : ''}</td>
-                        <td>{data ? data['Future-Orders'].Errors.value[0][1].toFixed(2) : ''}</td>
-                    </tr>
-                    <tr>
-                        <td>Order Update</td>
-                        <td className='avail'>
-                            <div className={`circle ${data ? data['Order-Update'].Avail === 'OK' ? 'ok' : 'failed' : ''}`} />
-                        </td>
-                        <td>{data ? data['Order-Update']['Req/s'].value[0][1].toFixed(2) : ''}</td>
-                        <td>{data ? data['Order-Update'].Errors.value[0][1].toFixed(2) : ''}</td>
-                    </tr>
-                    <tr>
-                        <td>Data-Mgt</td>
-                        <td className='avail'>
-                            <div className={`circle ${data ? data['Data-Mgt'].Avail === 'OK' ? 'ok' : 'failed' : ''}`} />
-                        </td>
-                        <td>{data ? data['Data-Mgt']['Req/s'].value[0][1].toFixed(2) : ''}</td>
-                        <td>{data ? data['Data-Mgt'].Errors.value[0][1].toFixed(2) : ''}</td>
-                    </tr>
-                    <tr>
-                        <td>Parameter</td>
-                        <td className='avail'>
-                            <div className={`circle ${data ? data['Parameter'].Avail === 'OK' ? 'ok' : 'failed' : ''}`} />
-                        </td>
-                        <td>{data ? data['Parameter']['Req/s'].value[0][1].toFixed(2) : ''}</td>
-                        <td>{data ? data['Parameter'].Errors.value[0][1].toFixed(2) : ''}</td>
-                    </tr>
+                    {rows.map(({ name, key }) => (
+                        <tr key={key} onClick={() => handleRowClick(key)}>
+                            <td>{name}</td>
+                            <td className="avail">
+                                <div
+                                    className={`circle ${data?.[key]?.Avail === 'OK'
+                                        ? 'ok'
+                                        : data?.[key]?.Avail
+                                            ? 'failed'
+                                            : 'null'
+                                        }`}
+                                />
+                            </td>
+                            <td>{getNestedValue(() => data![key]['Req/s']!.value[0][1])}</td>
+                            <td>{getNestedValue(() => data![key].Errors!.value[0][1])}</td>
+                        </tr>
+                    ))}
                 </tbody>
+
             </table>
 
         </div>

@@ -1,0 +1,21 @@
+.hsc-run-details-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    background-color: #FFFFFF1A;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.5rem;
+
+    .divider {
+        flex-grow: 1;
+        width: 1px;
+        height: 60%;
+        background-color: white;
+    }
+
+    .hsc-hightlight {
+        font-weight: 600;
+    }
+}

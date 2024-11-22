@@ -4,5 +4,8 @@
     text-align: center;
     width: 100%;
     color: white;
-    line-height: 2rem;
+    line-height: 1.9rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    filter: brightness(0.5)
 }

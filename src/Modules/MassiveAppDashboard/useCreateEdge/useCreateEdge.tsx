@@ -52,9 +52,9 @@ const useCreateEdge = () => {
   {
     id: 'edge6',
     type: 'smoothstep',
-    style: {
-      strokeDasharray: 3
-    },
+    // style: {
+    //   strokeDasharray: 3
+    // },
     source: 'ibs-backend',
     target: 'core-api-gateway',
     markerEnd: { type: MarkerType.Arrow },

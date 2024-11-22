@@ -4,8 +4,8 @@ type Props = {}
 
 const DataFeedTable = (props: Props) => {
     return (
-        <div className='table-container'>
-            <table className="service-table">
+        <div className='datafeed-table-container'>
+            <table className="datafeed-service-table">
                 <thead>
                     <tr>
                         <th>Data Feed</th>

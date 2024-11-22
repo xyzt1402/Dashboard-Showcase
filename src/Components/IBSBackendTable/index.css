@@ -1,33 +1,49 @@
-.table-container {
+.ibs-table-container {
     padding: 1rem;
-    width: fit-content;
+    width: 100%;
     font-size: 0.8rem;
+    background-color: #ffffff1a;
+    border-radius: 0.5rem;
+    /* margin-bottom: 1rem; */
 }
 
-.service-table {
-    /* width: 100%; */
+.ibs-service-table {
+    width: 100%;
     border-collapse: collapse;
     color: white;
     /* border-spacing: none; */
 }
 
-.service-table th,
-.service-table td {
-    padding: 0.5rem;
+.ibs-service-table th,
+.ibs-service-table td {
+    padding: 0.4rem;
     text-align: center;
-    line-height: 0.5;
+    line-height: 0.5rem;
 }
 
-.service-table th:first-child,
-.service-table td:first-child {
+.ibs-service-table th:first-child,
+.ibs-service-table td:first-child {
     border-right: 2px solid white;
     /* Divider between first and other columns */
+    width: 9rem;
 }
 
-.service-table th,
-.service-table td {
+.ibs-service-table th,
+.ibs-service-table td {
     border-bottom: none;
     /* Horizontal row dividers */
+}
+
+.ibs-service-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.ibs-service-table tbody tr:hover {
+    background-color: #f1f1f12f;
+    border-radius: 1rem;
+    /* Light gray color for the hover effect */
+    cursor: pointer;
+    /* Change cursor to indicate the row is clickable */
 }
 
 .circle {
@@ -42,6 +58,10 @@
 
 .failed {
     background-color: #FF848C;
+}
+
+.null {
+    background-color: #C3C7CB;
 }
 
 .avail {

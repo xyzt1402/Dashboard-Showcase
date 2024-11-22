@@ -1,0 +1,204 @@
+/* index.css */
+
+.hsc-detail-table {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-right: 2rem;
+    padding-left: 2rem;
+    /* margin-left: ; */
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.ant-table {
+    background-color: transparent !important;
+    /* Transparent background */
+    border: none !important;
+    /* Remove outer border */
+}
+
+.ant-table-tbody>tr>td {
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.623) !important;
+    /* Semi-transparent row divider */
+    background-color: transparent !important;
+    /* Transparent cell background */
+    color: white !important;
+    /* Set text color to white */
+    text-align: center;
+    /* Enable scrolling */
+}
+
+.ant-table-tbody>tr>td::-webkit-scrollbar {
+    width: 8px;
+    /* Scrollbar width */
+    height: 8px;
+    /* Scrollbar height for horizontal scrolling */
+}
+
+.ant-table-tbody>tr>td::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Thumb color */
+    border-radius: 4px;
+    /* Rounded corners */
+}
+
+.ant-table-tbody>tr>td::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    /* Hover effect */
+}
+
+.ant-table-tbody>tr>td::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Track color */
+    border-radius: 4px;
+}
+
+/* For Firefox */
+.ant-table-tbody>tr>td {
+    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.1);
+    /* Thumb and track colors */
+    scrollbar-width: thin;
+    /* Thin scrollbar */
+}
+
+.ant-table-thead>tr>th {
+    /* border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important; */
+    /* Semi-transparent divider */
+    background-color: transparent !important;
+    /* Transparent header background */
+    color: white !important;
+    text-align: center !important;
+
+    /* Set text color to white */
+}
+
+.ant-table-tbody>tr>td,
+.ant-table-thead>tr>th {
+    border-left: none !important;
+    /* Remove vertical borders */
+    border-right: none !important;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-word;
+    /* Prevents long words from overflowing */
+    white-space: normal;
+    /* display: flex; */
+    /* justify-content: center; */
+
+}
+
+
+
+.ant-table-tbody>tr>td:nth-child(3),
+.ant-table-thead>tr>th:nth-child(3) {
+    text-align: left !important;
+    /* Align text to the left for the third column */
+
+}
+
+.ant-table-tbody>tr:hover>td {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    /* Light hover effect */
+}
+
+.ant-table-placeholder {
+    background-color: #ffffff00 !important;
+}
+
+.ant-table-cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Scrollable expand-content */
+.expand-content {
+    overflow: auto;
+    /* Enable scrolling */
+    padding: 0.5rem;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    /* Optional padding for better content spacing */
+}
+
+.expand-content-para {
+    text-align: left;
+}
+
+/* Custom scrollbar styling for expand-content */
+.expand-content::-webkit-scrollbar {
+    width: 8px;
+    /* Scrollbar width */
+    height: 8px;
+    /* Scrollbar height for horizontal scrolling */
+}
+
+.expand-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Thumb color */
+    border-radius: 4px;
+    /* Rounded corners */
+}
+
+.expand-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    /* Hover effect */
+}
+
+.expand-content::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Track color */
+    border-radius: 4px;
+}
+
+/* For Firefox */
+.expand-content {
+    scrollbar-color: rgba(255, 255, 255, 0.5) rgba(0, 0, 0, 0.1);
+    /* Thumb and track colors */
+    scrollbar-width: thin;
+    /* Thin scrollbar */
+}
+
+
+.ant-table-expanded-row .expand-content {
+    max-height: 100px;
+    /* Adjust this to the content height */
+    opacity: 1;
+}
+
+.hsc-method-get {
+    color: #73E2A4;
+}
+
+.hsc-method-post {
+    color: #FFD970;
+}
+
+.hsc-status-cell {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6rem;
+    font-weight: 700;
+    height: 2rem;
+    border-radius: 0.4rem;
+}
+
+.hsc-status-passed {
+    background-color: #ACFDD7;
+    color: #1F5F29;
+}
+
+.hsc-status-failed {
+    background-color: #F8D3D3;
+    color: #BF3B34;
+}
+
+.hsc-cell-container {
+    display: flex;
+    justify-content: center;
+}
+
+.hsc-no-data {
+    font-size: 8rem;
+    font-weight: 700;
+}
